@@ -41,7 +41,6 @@ class Page extends Model
 	 */
 	protected $fillable = [
 		'name', 'title', 'slug', 'template', 'content', 'parent_id',
-		'product_id', 'page_date',
 		// Metadata
 		'meta_title', 'meta_description', 'meta_keywords',
 		'og_title', 'og_description', 'social_image',
