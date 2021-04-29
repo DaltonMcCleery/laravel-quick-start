@@ -77,21 +77,21 @@ class LaravelQuickStartServiceProvider extends ServiceProvider
 	    ], 'config');
 
 	    $this->publishes([
-		    __DIR__.'/resources' => resource_path(),
+		    __DIR__.'/resources' => resource_path('views'),
 	    ], 'resources');
 
 	    $this->publishes([
 		    __DIR__.'/View' => app_path('View')
 	    ], 'views');
 
-	    $this->publishes([
-		    __DIR__.'/Models' => app_path('Models'),
-		    __DIR__.'/Nova' => app_path('Nova')
-	    ], 'models');
+//	    $this->publishes([
+//		    __DIR__.'/Models' => app_path('Models'),
+//		    __DIR__.'/Nova' => app_path('Nova')
+//	    ], 'models');
 
 	    $this->publishes([
-		    __DIR__.'/Traits/ContentTrait.php' => app_path('Traits'),
-		    __DIR__.'/Traits/ValidationTrait.php' => app_path('Traits'),
+		    __DIR__.'/Traits/ContentTrait.php' => app_path('Traits/ContentTrait.php'),
+		    __DIR__.'/Traits/ValidationTrait.php' => app_path('Traits/ValidationTrait.php'),
 	    ], 'traits');
     }
 
