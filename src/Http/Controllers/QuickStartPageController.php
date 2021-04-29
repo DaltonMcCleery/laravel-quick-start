@@ -1,4 +1,3 @@
-
 <?php
 
 namespace DaltonMcCleery\LaravelQuickStart\Http\Controllers;
