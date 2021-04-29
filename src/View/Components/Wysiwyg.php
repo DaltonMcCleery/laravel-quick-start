@@ -1,6 +1,6 @@
 <?php
 
-namespace DaltonMcCleery\LaravelQuickStart\View\Components;
+namespace App\View\Components;
 
 use Ahinkle\AutoResolvableComponents\AutoResolvableComponent;
 
