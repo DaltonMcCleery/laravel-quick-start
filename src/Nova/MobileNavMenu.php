@@ -4,11 +4,11 @@ namespace App\Nova;
 
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
+use App\Nova\Filters\MenuType;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\BelongsTo;
 use ElevateDigital\CharcountedFields\TextCounted;
-use DaltonMcCleery\LaravelQuickStart\Nova\Filters\MenuType;
 
 class MobileNavMenu extends Resource
 {
