@@ -16,7 +16,7 @@ use Infinety\Filemanager\FilemanagerField;
 use ElevateDigital\CharcountedFields\TextCounted;
 use ElevateDigital\CharcountedFields\TextareaCounted;
 
-class Pages extends Resource
+class Page extends Resource
 {
 	use ContentTrait;
 
