@@ -1,6 +1,6 @@
 <?php
 
-namespace DaltonMcCleery\LaravelQuickStart\Nova;
+namespace App\Nova;
 
 use Laravel\Nova\Panel;
 use Manogi\Tiptap\Tiptap;
