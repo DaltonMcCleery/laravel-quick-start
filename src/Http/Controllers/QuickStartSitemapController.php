@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace DaltonMcCleery\LaravelQuickStart\Http\Controllers;
 
 use DaltonMcCleery\LaravelQuickStart\Models\Page;
 

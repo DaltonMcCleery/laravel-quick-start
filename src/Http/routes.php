@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use DaltonMcleery\LaravelQuickStart\Http\Controllers\QuickStartPageController;
-use DaltonMcleery\LaravelQuickStart\Http\Controllers\QuickStartSitemapController;
+use DaltonMcCleery\LaravelQuickStart\Http\Controllers\QuickStartPageController;
+use DaltonMcCleery\LaravelQuickStart\Http\Controllers\QuickStartSitemapController;
 
 Route::middleware(['web'])->group(function () {
 	// Sitemap
