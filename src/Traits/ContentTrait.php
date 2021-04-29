@@ -15,7 +15,7 @@ use ElevateDigital\CharcountedFields\TextareaCounted;
 
 /**
  * Trait ContentTrait
- * @package DaltonMcCleery\LaravelQuickStart\Traits
+ * @package App\Traits
  */
 trait ContentTrait
 {

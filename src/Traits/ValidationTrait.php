@@ -1,6 +1,6 @@
 <?php
 
-namespace DaltonMcCleery\LaravelQuickStart\Traits;
+namespace App\Traits;
 
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -8,7 +8,7 @@ use DaltonMcCleery\LaravelQuickStart\Rules\ReCaptcha;
 
 /**
  * Trait ValidationTrait
- * @package DaltonMcCleery\LaravelQuickStart\Traits
+ * @package App\Traits
  */
 trait ValidationTrait
 {
