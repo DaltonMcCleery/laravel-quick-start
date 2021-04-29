@@ -1,0 +1,53 @@
+{
+  "name": "daltonmccleery/laravel-quick-start",
+  "description": "Quick Start package to get up and running with a pre-defined Laravel Structure",
+  "keywords": [
+    "laravel",
+    "quick-start"
+  ],
+  "homepage": "https://github.com/DaltonMcCleery/laravel-quick-start",
+  "license": "MIT",
+  "type": "library",
+  "authors": [
+    {
+      "name": "Dalton McCleery",
+      "email": "daltonmccleery@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": "^7.4|^8.0",
+    "ahinkle/auto-resolvable-blade-components": "^1.0",
+    "doctrine/dbal": "^2.9|^3.0",
+    "illuminate/support": "^8.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "DaltonMcCleery\\LaravelQuickStart\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "DaltonMcCleery\\LaravelQuickStart\\Tests\\": "tests"
+    }
+  },
+  "scripts": {
+    "test": "vendor/bin/phpunit"
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "DaltonMcCleery\\LaravelQuickStart\\LaravelQuickStartServiceProvider"
+      ],
+      "aliases": {
+        "TeamInvites": "DaltonMcCleery\\LaravelQuickStart\\LaravelQuickStartStorageFacade"
+      }
+    }
+  }
+}
