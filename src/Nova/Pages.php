@@ -16,7 +16,7 @@ use Infinety\Filemanager\FilemanagerField;
 use ElevateDigital\CharcountedFields\TextCounted;
 use ElevateDigital\CharcountedFields\TextareaCounted;
 
-class Page extends Resource
+class Pages extends Resource
 {
 	use ContentTrait;
 
@@ -143,7 +143,7 @@ class Page extends Resource
 					return '<strong style="color: #f44336">Please Enter a URL</strong>';
 				})->asHtml(),
 
-			BelongsTo::make('Parent Page', 'parent', 'App\Nova\Page')
+			BelongsTo::make('Parent Page', 'parent', 'DaltonMcCleery\LaravelQuickStart\Nova\Page')
 				->stacked()->hideFromIndex()->hideWhenUpdating()->hideWhenCreating(),
 
 			Select::make('Parent Page', 'parent_id')
