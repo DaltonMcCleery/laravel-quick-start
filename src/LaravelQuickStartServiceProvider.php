@@ -92,6 +92,7 @@ class LaravelQuickStartServiceProvider extends ServiceProvider
 	    $this->publishes([
 		    __DIR__.'/Traits/ContentTrait.php' => app_path('Traits/ContentTrait.php'),
 		    __DIR__.'/Traits/ValidationTrait.php' => app_path('Traits/ValidationTrait.php'),
+		    __DIR__.'/Traits/QuickStartPageExtensions.php' => app_path('Traits/QuickStartPageExtensions.php'),
 	    ], 'traits');
 
 	    $this->publishes([

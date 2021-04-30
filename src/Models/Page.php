@@ -3,6 +3,7 @@
 namespace DaltonMcCleery\LaravelQuickStart\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\QuickStartPageExtensions;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use DaltonMcCleery\LaravelQuickStart\Traits\CacheTrait;
@@ -19,6 +20,7 @@ class Page extends Model
 	use SoftDeletes;
 	use CacheTrait;
 	use HasFactory;
+	use QuickStartPageExtensions;
 
 	/**
 	 * The table associated with the model.
