@@ -84,23 +84,6 @@ class Page extends Model
 		});
 	}
 
-	/**
-	 * Return the relative URL to this resource
-	 * @return string
-	 */
-	public function renderUrl() {
-		if ($this->slug) {
-			$prefix = '';
-			if ($this->parent) {
-				$prefix = '/'.$this->parent->slug;
-			}
-
-			return $prefix.'/'.(($this->slug === 'home') ? '' : $this->slug);
-		}
-
-		return '/';
-	}
-
 	public function parent() {
 		return $this->belongsTo('DaltonMcCleery\LaravelQuickStart\Models\Page', 'parent_id');
 	}
@@ -111,5 +94,23 @@ class Page extends Model
 
 	public function editor() {
 		return $this->belongsTo('App\Models\User', 'editor_id');
+	}
+
+	/**
+	 * Return the relative URL to this resource
+	 * @return string
+	 */
+	public function getSlugAttribute(): string
+	{
+		if ($this->slug) {
+			$prefix = '';
+			if ($this->parent) {
+				$prefix = '/'.$this->parent->slug;
+			}
+
+			return $prefix.'/'.(($this->slug === 'home') ? '' : $this->slug);
+		}
+
+		return '/';
 	}
 }

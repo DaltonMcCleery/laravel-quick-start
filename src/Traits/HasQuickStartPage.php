@@ -22,11 +22,6 @@ trait HasQuickStartPage
 		return $this->page->title;
 	}
 
-	public function getSlugAttribute()
-	{
-		return $this->page->renderUrl();
-	}
-
 	public function getPageContentAttribute()
 	{
 		return $this->page->content;
