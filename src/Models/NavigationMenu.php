@@ -4,6 +4,7 @@ namespace DaltonMcCleery\LaravelQuickStart\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use DaltonMcCleery\LaravelQuickStart\Traits\CacheTrait;
 
 /**
@@ -15,6 +16,7 @@ class NavigationMenu extends Model
 {
 	use SoftDeletes;
 	use CacheTrait;
+	use HasFactory;
 
 	/**
 	 * The table associated with the model.
