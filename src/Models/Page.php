@@ -100,7 +100,7 @@ class Page extends Model
 	 * Return the relative URL to this resource
 	 * @return string
 	 */
-	public function getSlugAttribute(): string
+	public function getPageSlugAttribute(): string
 	{
 		if ($this->slug) {
 			$prefix = '';
