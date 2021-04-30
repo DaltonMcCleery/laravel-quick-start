@@ -113,4 +113,9 @@ class Page extends Model
 
 		return '/';
 	}
+
+	protected static function newFactory()
+	{
+		return \DaltonMcCleery\LaravelQuickStart\Database\Factories\PageFactory::new();
+	}
 }

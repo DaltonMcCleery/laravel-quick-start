@@ -79,4 +79,9 @@ class BannerPromo extends Model
 	public function editor() {
 		return $this->belongsTo('App\Models\User');
 	}
+
+	protected static function newFactory()
+	{
+		return \DaltonMcCleery\LaravelQuickStart\Database\Factories\BannerPromoFactory::new();
+	}
 }

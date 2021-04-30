@@ -80,4 +80,9 @@ class NavigationMenu extends Model
 		return $this->hasMany('DaltonMcCleery\LaravelQuickStart\Models\NavigationMenu', 'parent_id')
 			->orderBy('menu_order');
 	}
+
+	protected static function newFactory()
+	{
+		return \DaltonMcCleery\LaravelQuickStart\Database\Factories\NavigationMenuFactory::new();
+	}
 }
