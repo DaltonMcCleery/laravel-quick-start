@@ -1,6 +1,6 @@
 <?php
 
-namespace DaltonMcCleery\LaravelQuickStart\Models;
+namespace DaltonMcCleery\LaravelQuickStart\Database\factories;
 
 use DaltonMcCleery\LaravelQuickStart\Models\Page;
 use Illuminate\Database\Eloquent\Factories\Factory;

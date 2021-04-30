@@ -1,6 +1,6 @@
 <?php
 
-namespace DaltonMcCleery\LaravelQuickStart\Models;
+namespace DaltonMcCleery\LaravelQuickStart\Database\factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use DaltonMcCleery\LaravelQuickStart\Models\BannerPromo;

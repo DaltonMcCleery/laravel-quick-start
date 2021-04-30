@@ -46,7 +46,7 @@
         "DaltonMcCleery\\LaravelQuickStart\\LaravelQuickStartServiceProvider"
       ],
       "aliases": {
-        "TeamInvites": "DaltonMcCleery\\LaravelQuickStart\\LaravelQuickStartStorageFacade"
+        "LaravelQuickStart": "DaltonMcCleery\\LaravelQuickStart\\LaravelQuickStartStorageFacade"
       }
     }
   }
