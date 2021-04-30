@@ -1,6 +1,6 @@
 <?php
 
-namespace DaltonMcCleery\LaravelQuickStart\Database\factories;
+namespace DaltonMcCleery\LaravelQuickStart\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use DaltonMcCleery\LaravelQuickStart\Models\NavigationMenu;
