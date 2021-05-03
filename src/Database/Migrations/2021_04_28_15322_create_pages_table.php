@@ -35,6 +35,7 @@ class CreatePagesTable extends Migration
 			$table->string('social_image')->nullable();
 			$table->longtext('content')->nullable();
 			$table->unsignedBigInteger('parent_id')->nullable();
+			$table->date('page_date')->nullable();
 			$table->timestamps();
 			$table->softDeletes();
 		});
