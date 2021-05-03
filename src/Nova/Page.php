@@ -75,6 +75,9 @@ class Page extends \App\Nova\Resource
 	public function fields(Request $request)
 	{
 		return [
+			MorphTo::make('Extendabled Page', 'extendable_page')->types(config('quick_start.page_relationships'))
+				->hideWhenCreating()->hideWhenUpdating(),
+
 			ID::make()->sortable()->hideFromIndex(),
 
 			new Panel('Page Details', $this->basicInformationFields()),

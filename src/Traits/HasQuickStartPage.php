@@ -9,7 +9,7 @@ namespace DaltonMcCleery\LaravelQuickStart\Traits;
 trait HasQuickStartPage
 {
 	public function page() {
-		return $this->belongsTo('DaltonMcCleery\LaravelQuickStart\Models\Page', 'page_id');
+		return $this->morphOne('DaltonMcCleery\LaravelQuickStart\Models\Page', 'extendable_page');
 	}
 
 	public function getPageNameAttribute()

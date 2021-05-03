@@ -100,6 +100,10 @@ class Page extends Model
 		return $this->belongsTo('App\Models\User', 'editor_id');
 	}
 
+	public function extendable_page() {
+		return $this->morphTo();
+	}
+
 	/**
 	 * Return the relative URL to this resource
 	 * @return string

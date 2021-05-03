@@ -36,6 +36,8 @@ class CreatePagesTable extends Migration
 			$table->longtext('content')->nullable();
 			$table->unsignedBigInteger('parent_id')->nullable();
 			$table->date('page_date')->nullable();
+			$table->integer('extendable_page_id')->nullable();
+			$table->string('extendable_page_type')->nullable();
 			$table->timestamps();
 			$table->softDeletes();
 		});
