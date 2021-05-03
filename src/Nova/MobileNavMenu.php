@@ -83,10 +83,10 @@ class MobileNavMenu extends Resource
                 ->stacked()->nullable()
                 ->help('The Page this menu item will link to'),
 
-            BelongsTo::make('Parent Menu Link', 'parent', 'DaltonMcCleery\LaravelQuickStart\Nova\MobileNavMenu')
+            BelongsTo::make('Parent Menu Link', 'parent', 'App\Nova\MobileNavMenu')
                 ->stacked()->nullable(),
 
-            HasMany::make('Children Links', 'children', 'DaltonMcCleery\LaravelQuickStart\Nova\MobileNavMenu')
+            HasMany::make('Children Links', 'children', 'App\Nova\MobileNavMenu')
                 ->stacked()->nullable(),
 
             TextCounted::make('Type')

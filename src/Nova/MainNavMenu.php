@@ -79,14 +79,14 @@ class MainNavMenu extends Resource
                 ->help('The URL this menu will direct the user to when clicked. RECOMMEND USING PAGE OPTION BELOW')
                 ->rules('nullable', 'max:255'),
 
-            BelongsTo::make('Linked Page', 'page', 'DaltonMcCleery\LaravelQuickStart\Nova\Page')
+            BelongsTo::make('Linked Page', 'page', 'App\Nova\Page')
                 ->stacked()->nullable()
                 ->help('The Page this menu item will link to'),
 
-            BelongsTo::make('Parent Menu Link', 'parent', 'DaltonMcCleery\LaravelQuickStart\Nova\MainNavMenu')
+            BelongsTo::make('Parent Menu Link', 'parent', 'App\Nova\MainNavMenu')
                 ->stacked()->nullable(),
 
-            HasMany::make('Children Links', 'children', 'DaltonMcCleery\LaravelQuickStart\Nova\MainNavMenu')
+            HasMany::make('Children Links', 'children', 'App\Nova\MainNavMenu')
                 ->stacked()->nullable(),
 
             TextCounted::make('Type')

@@ -143,7 +143,7 @@ class Page extends Resource
 					return '<strong style="color: #f44336">Please Enter a URL</strong>';
 				})->asHtml(),
 
-			BelongsTo::make('Parent Page', 'parent', 'DaltonMcCleery\LaravelQuickStart\Nova\Page')
+			BelongsTo::make('Parent Page', 'parent', 'App\Nova\Page')
 				->stacked()->hideFromIndex()->hideWhenUpdating()->hideWhenCreating(),
 
 			Select::make('Parent Page', 'parent_id')
