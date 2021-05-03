@@ -11,6 +11,7 @@ use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Heading;
 use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\MorphTo;
 use Laravel\Nova\Fields\BelongsTo;
 use Infinety\Filemanager\FilemanagerField;
 use ElevateDigital\CharcountedFields\TextCounted;
