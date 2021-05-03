@@ -22,7 +22,7 @@ class QuickStartPageController extends Controller
 		$segments = $this->get_segments($request);
 		$page = $this->getCache('page_'.$segments->last(), function() use ($segments) {
 			// Empty cache, get Page and re-add them to the cache
-			$dbPage = Page::with(['Parent' => function ($query) use ($segments) {
+			$dbPage = Page::with(['parent' => function ($query) use ($segments) {
 				if ($segments->count() > 1) {
 					// more than 1 segment found, find Parent Page
 					$query->where([
