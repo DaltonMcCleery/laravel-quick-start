@@ -58,6 +58,15 @@ class Page extends Model
 	];
 
 	/**
+	 * The relationships that should always be loaded.
+	 *
+	 * @var array
+	 */
+	protected $with = [
+		'parent'
+	];
+
+	/**
 	 * The "booted" method of the model.
 	 *
 	 * @return void
