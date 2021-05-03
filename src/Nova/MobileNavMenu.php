@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Nova;
+namespace DaltonMcCleery\LaravelQuickStart\Nova;
 
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use App\Nova\Filters\MenuType;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\BelongsTo;
 use ElevateDigital\CharcountedFields\TextCounted;
+use DaltonMcCleery\LaravelQuickStart\Nova\Filters\MenuType;
 
-class MobileNavMenu extends Resource
+class MobileNavMenu extends \App\Nova\Resource
 {
     /**
      * The model the resource corresponds to.
@@ -79,14 +79,14 @@ class MobileNavMenu extends Resource
                 ->help('The URL this menu will direct the user to when clicked. RECOMMEND USING PAGE OPTION BELOW')
                 ->rules('nullable', 'max:255'),
 
-            BelongsTo::make('Linked Page', 'page', 'App\Nova\Page')
+            BelongsTo::make('Linked Page', 'page', 'DaltonMcCleery\LaravelQuickStart\Nova\Page')
                 ->stacked()->nullable()
                 ->help('The Page this menu item will link to'),
 
-            BelongsTo::make('Parent Menu Link', 'parent', 'App\Nova\MobileNavMenu')
+            BelongsTo::make('Parent Menu Link', 'parent', 'DaltonMcCleery\LaravelQuickStart\Nova\MobileNavMenu')
                 ->stacked()->nullable(),
 
-            HasMany::make('Children Links', 'children', 'App\Nova\MobileNavMenu')
+            HasMany::make('Children Links', 'children', 'DaltonMcCleery\LaravelQuickStart\Nova\MobileNavMenu')
                 ->stacked()->nullable(),
 
             TextCounted::make('Type')

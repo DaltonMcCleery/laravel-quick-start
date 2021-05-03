@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Nova;
+namespace DaltonMcCleery\LaravelQuickStart\Nova;
 
 use Laravel\Nova\Panel;
 use Manogi\Tiptap\Tiptap;
@@ -11,7 +11,7 @@ use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\BelongsTo;
 use ElevateDigital\CharcountedFields\TextCounted;
 
-class BannerPromos extends Resource
+class BannerPromos extends \App\Nova\Resource
 {
     /**
      * The model the resource corresponds to.

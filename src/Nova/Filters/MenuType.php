@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Nova\Filters;
+namespace DaltonMcCleery\LaravelQuickStart\Nova\Filters;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Filters\BooleanFilter;
