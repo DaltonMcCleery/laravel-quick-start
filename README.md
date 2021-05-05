@@ -18,6 +18,8 @@ Then, run the new migrations:
 php artisan migrate
 ```
 
+### Laravel Nova
+
 Update your `NovaServiceProvider` to include the following changes:
 
 ```php
