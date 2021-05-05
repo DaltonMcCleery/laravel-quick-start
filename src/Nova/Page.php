@@ -127,21 +127,17 @@ class Page extends \App\Nova\Resource
 				->rules('required', 'max:255')
 				->creationRules('unique:pages,slug')
 				->updateRules('unique:pages,slug,{{resourceId}}')
-				->help('PLEASE DO NOT INCLUDE THE STARTING " / " SLASH')
+				->help('
+				    <ul>
+                        <li>Do not include the starting "/" slash</li>
+                        <li>Do not include special characters (!@#$%^&*()_+)</li>
+                        <li>Use a "-" dash to indicate a space</li>
+                        <li>Use all lowercase letters</li>
+                    </ul>
+				')
 				->displayUsing(function() {
 					if ($this->slug) {
-						$parent = '';
-						if ($this->parent) {
-							$parent = $this->parent->slug . '/';
-						}
-
-						$url = config('app.url');
-						if (substr($url, -1) !== '/') {
-							// Remove ending slash
-							$url .= '/';
-						}
-
-						return '<a href="'.$url.$parent.($this->slug !== 'home' ? $this->slug : '').'" target="_blank">'.$this->slug.'</a>';
+						return '<a href="'.$this->page_slug.'" target="_blank">'.$this->slug.'</a>';
 					}
 
 					return '<strong style="color: #f44336">Please Enter a URL</strong>';
