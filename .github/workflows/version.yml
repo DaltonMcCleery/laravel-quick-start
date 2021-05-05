@@ -7,7 +7,7 @@ on:
 
 name: 'Version'
 jobs:
-  vapor_deploy:
+  version:
     runs-on: ubuntu-latest
 
     steps:
