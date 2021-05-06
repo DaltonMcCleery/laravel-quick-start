@@ -34,10 +34,11 @@ protected function resources()
 
     Nova::resources([
         \DaltonMcCleery\LaravelQuickStart\Nova\Page::class,
-        \DaltonMcCleery\LaravelQuickStart\Nova\BannerPromos::class,
         \DaltonMcCleery\LaravelQuickStart\Nova\MainNavMenu::class,
+        \DaltonMcCleery\LaravelQuickStart\Nova\BannerPromos::class,
         \DaltonMcCleery\LaravelQuickStart\Nova\MobileNavMenu::class,
-        \DaltonMcCleery\LaravelQuickStart\Nova\FooterNavMenu::class
+        \DaltonMcCleery\LaravelQuickStart\Nova\FooterNavMenu::class,
+        \DaltonMcCleery\LaravelQuickStart\Nova\ReusableBlocks::class
     ]);
 }
 ```
