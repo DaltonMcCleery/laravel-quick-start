@@ -19,7 +19,9 @@
     "php": "^7.4|^8.0",
     "ahinkle/auto-resolvable-blade-components": "^1.0",
     "doctrine/dbal": "^2.9|^3.0",
-    "illuminate/support": "^8.0"
+    "illuminate/support": "^8.0",
+    "elevate-digital/nova-charcounted-fields": "dev-master",
+    "whitecube/nova-flexible-content": "^0.2.8"
   },
   "require-dev": {
     "phpunit/phpunit": "^9.0"
