@@ -30,6 +30,6 @@ class ReusableBlock extends AutoResolvableComponent
 			return $dbBlock;
 		});
 
-		$this->content = $block->content[0];
+		$this->content = $block->content;
 	}
 }
