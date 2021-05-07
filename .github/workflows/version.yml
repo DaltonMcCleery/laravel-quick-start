@@ -28,9 +28,3 @@ jobs:
           major-wording: 'MAJOR,major'
           patch-wording: 'PATCH,patch'
           commit-message: 'CI: bumps version to {{version}} [skip ci]'
-
-      # Publish to packagist
-      - name: curl
-        uses: wei/curl@v1
-        with:
-          args: -XPOST -H'content-type:application/json' 'https://packagist.org/api/update-package?username=dmccleery&apiToken=${{ secrets.PACKAGIST_API_TOKEN }}' -d'{"repository":{"url":"https://packagist.org/packages/daltonmccleery/laravel-quick-start"}}'
