@@ -6,11 +6,11 @@
             </li>
             @if($page->parent)
                 <li>
-                    <a href="{{ '/'.$page->parent->slug }}">{{ $page->parent->name }}</a>
+                    <a href="{{ $page->parent->page_slug }}">{{ $page->parent->name }}</a>
                 </li>
             @endif
             <li>
-                <a href="{{ $page->renderUrl() }}">{{ $page->name }}</a>
+                <a href="{{ $page->page_slug }}">{{ $page->name }}</a>
             </li>
         </ul>
     </div>
