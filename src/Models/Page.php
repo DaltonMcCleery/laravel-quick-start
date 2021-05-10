@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use DaltonMcCleery\LaravelQuickStart\Traits\CacheTrait;
 use Whitecube\NovaFlexibleContent\Concerns\HasFlexible;
+use DaltonMcCleery\LaravelQuickStart\Traits\HasModelRevisions;
 
 /**
  * Class Page
@@ -16,10 +17,11 @@ use Whitecube\NovaFlexibleContent\Concerns\HasFlexible;
  */
 class Page extends Model
 {
-	use HasFlexible;
-	use SoftDeletes;
 	use CacheTrait;
 	use HasFactory;
+	use HasFlexible;
+	use SoftDeletes;
+	use HasModelRevisions;
 	use QuickStartPageExtensions;
 
 	/**
