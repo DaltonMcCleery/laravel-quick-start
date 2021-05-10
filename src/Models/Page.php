@@ -83,6 +83,8 @@ class Page extends Model
 		});
 
 		static::updating(function ($page) use ($user) {
+			self::create_static_revision($page);
+
 			$page->editor()->associate($user);
 
 			// Clear cache
