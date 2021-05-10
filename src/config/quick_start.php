@@ -11,5 +11,9 @@ return [
 
 	'view_composer_pages' => [
 		'*'
+	],
+
+	'view_unpublished_pages' => [
+		// test@email.com
 	]
 ];
