@@ -52,7 +52,7 @@ use DaltonMcCleery\LaravelQuickStart\Traits\HasModelRevisions;
 
 class YourModel extends Model
 {
-	use HasModelRevisions;
+  use HasModelRevisions;
 ```
 
 If you're using Nova, you'll need to update your Model's `boot` method as follows:
@@ -63,19 +63,19 @@ use DaltonMcCleery\LaravelQuickStart\Traits\HasModelRevisions;
 class YourModel extends Model
 {
 
-    /**
-	 * The "booted" method of the model.
-	 *
-	 * @return void
-	 */
-	protected static function booted()
-	{
-		static::updating(function ($model) {
-			if ($model->create_new_revision) {
-				self::create_static_revision($model);
-			}
-		});
-	}
+  /**
+   * The "booted" method of the model.
+   *
+   * @return void
+  */
+  protected static function booted()
+  {
+    static::updating(function ($model) {
+	  if ($model->create_new_revision) {
+	    self::create_static_revision($model);
+	  }
+	});
+  }
 ```
 
 Lastly, add a checkbox field to that Model's Nova resource, like so:
