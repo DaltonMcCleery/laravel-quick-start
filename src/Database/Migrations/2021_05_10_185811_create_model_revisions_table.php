@@ -14,10 +14,10 @@ class CreateModelRevisionsTable extends Migration
     public function up()
     {
         Schema::create('model_revisions', function (Blueprint $table) {
-            $table->id();
-	        $table->longtext('content')->nullable();
-	        $table->integer('revisionable_model_id')->nullable();
-	        $table->string('revisionable_model_type')->nullable();
+        	$table->id();
+            $table->longtext('content')->nullable();
+            $table->integer('revisionable_model_id');
+            $table->string('revisionable_model_type');
             $table->timestamps();
         });
     }
