@@ -70,11 +70,11 @@ class YourModel extends Model
      */
     protected static function booted()
     {
-      static::updating(function ($model) {
-        if ($model->create_new_revision) {
-          self::create_static_revision($model);
-        }
-      });
+        static::updating(function ($model) {
+            if ($model->create_new_revision) {
+              self::create_static_revision($model);
+            }
+        });
     }
 ```
 
