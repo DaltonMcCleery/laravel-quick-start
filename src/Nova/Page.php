@@ -93,7 +93,14 @@ class Page extends \App\Nova\Resource
 					)
 					->displayUsingLabels(),
 
-				$this->flexibleComponents(true)
+				$this->flexibleComponents(true),
+
+				Boolean::make('Create New Revision', 'create_new_revision')
+					->trueValue(1)
+					->falseValue(0)
+					->sortable()->stacked()
+					->help('Create a new Page revision upon saving that can be reverted to at any time.')
+					->rules('nullable')
 			]),
 		];
 	}
