@@ -17,7 +17,7 @@ class CreateModelRevisionsTable extends Migration
             $table->id();
 	        $table->longtext('content')->nullable();
 	        $table->integer('revisionable_model_id')->nullable();
-	        $table->string('revisionable_modele_type')->nullable();
+	        $table->string('revisionable_model_type')->nullable();
             $table->timestamps();
         });
     }
