@@ -29,19 +29,27 @@ trait HasModelRevisions
 	public function revert_last_revision() {
 		$last_revision = $this->revisions->last();
 
-		return $this->revert_to_revision($last_revision->id);
+		if ($last_revision) {
+			return $this->revert_to_revision($last_revision->id);
+		}
+
+		throw new \Exception('No Available Revisions');
 	}
 
 	public function revert_to_revision($revision_id) {
 		$revision = $this->revisions()->where('id', $revision_id)->first();
 
-		$attributes = json_decode($revision->content, true);
+		if ($revision) {
+			$attributes = json_decode($revision->content, true);
 
-		// Remove revision
-		$revision->delete();
-		$revision->save();
+			// Remove revision
+			$revision->delete();
+			$revision->save();
 
-		// Overwrite Model's attributes
-		return $this::update($attributes);
+			// Overwrite Model's attributes
+			return $this::update($attributes);
+		}
+
+		throw new \Exception('Unable to Revert to Revision');
 	}
 }
