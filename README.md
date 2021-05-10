@@ -43,6 +43,51 @@ protected function resources()
 }
 ```
 
+### Model Revisions
+
+To include Revisional history of changes, add the following Trait to your Model:
+
+```php
+use DaltonMcCleery\LaravelQuickStart\Traits\HasModelRevisions;
+
+class YourModel extends Model
+{
+	use HasModelRevisions;
+```
+
+If you're using Nova, you'll need to update your Model's `boot` method as follows:
+
+```php
+use DaltonMcCleery\LaravelQuickStart\Traits\HasModelRevisions;
+
+class YourModel extends Model
+{
+
+    /**
+	 * The "booted" method of the model.
+	 *
+	 * @return void
+	 */
+	protected static function booted()
+	{
+		static::updating(function ($model) {
+			if ($model->create_new_revision) {
+				self::create_static_revision($model);
+			}
+		});
+	}
+```
+
+Lastly, add a checkbox field to that Model's Nova resource, like so:
+
+```php
+Boolean::make('Create New Revision', 'create_new_revision')
+    ->trueValue(1)
+    ->falseValue(0)
+    ->help('Create a new revision upon saving that can be reverted to at any time.')
+    ->rules('nullable')
+```
+
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
