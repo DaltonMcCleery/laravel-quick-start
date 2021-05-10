@@ -52,7 +52,7 @@ use DaltonMcCleery\LaravelQuickStart\Traits\HasModelRevisions;
 
 class YourModel extends Model
 {
-  use HasModelRevisions;
+    use HasModelRevisions;
 ```
 
 If you're using Nova, you'll need to update your Model's `boot` method as follows:
@@ -63,19 +63,19 @@ use DaltonMcCleery\LaravelQuickStart\Traits\HasModelRevisions;
 class YourModel extends Model
 {
 
-  /**
-   * The "booted" method of the model.
-   *
-   * @return void
-  */
-  protected static function booted()
-  {
-    static::updating(function ($model) {
-	  if ($model->create_new_revision) {
-	    self::create_static_revision($model);
-	  }
-	});
-  }
+    /**
+     * The "booted" method of the model.
+     *
+     * @return void
+     */
+    protected static function booted()
+    {
+      static::updating(function ($model) {
+        if ($model->create_new_revision) {
+          self::create_static_revision($model);
+        }
+      });
+    }
 ```
 
 Lastly, add a checkbox field to that Model's Nova resource, like so:
@@ -86,6 +86,22 @@ Boolean::make('Create New Revision', 'create_new_revision')
     ->falseValue(0)
     ->help('Create a new revision upon saving that can be reverted to at any time.')
     ->rules('nullable')
+```
+
+Now you can create new revisions either statically (via static model closures) or non-statically 
+
+```php
+self::create_static_revision($model);
+
+$this->create_revision($model);
+```
+
+You can also rollback to the latest revision, or specify an ID of a revision:
+
+```php
+$model->revert_last_revision();
+
+$model->revert_to_revision(1);
 ```
 
 ## License
