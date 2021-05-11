@@ -100,6 +100,7 @@ class Page extends \App\Nova\Resource
 					->trueValue(1)
 					->falseValue(0)
 					->sortable()->stacked()
+					->hideFromDetail()->hideFromIndex()->hideWhenCreating()
 					->help('Create a new Page revision upon saving that can be reverted to at any time.')
 					->rules('nullable')
 			]),
