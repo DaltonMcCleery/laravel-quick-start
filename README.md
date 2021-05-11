@@ -72,7 +72,7 @@ class YourModel extends Model
     {
         static::updating(function ($model) {
             if ($model->create_new_revision) {
-                self::create_static_revision($model);
+                $model = self::create_static_revision($model);
             }
         });
     }
@@ -84,6 +84,7 @@ Lastly, add a checkbox field to that Model's Nova resource, like so:
 Boolean::make('Create New Revision', 'create_new_revision')
     ->trueValue(1)
     ->falseValue(0)
+    ->hideFromDetail()->hideFromIndex()->hideWhenCreating()
     ->help('Create a new revision upon saving that can be reverted to at any time.')
     ->rules('nullable')
 ```

@@ -15,15 +15,19 @@ trait HasModelRevisions
 	}
 
 	public static function create_static_revision($model_data) {
-		(new self)->create_revision($model_data);
+		return (new self)->create_revision($model_data);
 	}
 
 	public function create_revision($model_data) {
 		ModelRevision::create([
-			'content' => json_encode($model_data->getOriginal()),
+			'content' => $model_data->getOriginal(),
 			'revisionable_model_type' => (new \ReflectionClass($model_data))->getName(),
 			'revisionable_model_id' => $model_data->id
 		]);
+
+		$model_data->offsetUnset('create_new_revision');
+
+		return $model_data;
 	}
 
 	public function revert_last_revision() {
@@ -40,11 +44,10 @@ trait HasModelRevisions
 		$revision = $this->revisions()->where('id', $revision_id)->first();
 
 		if ($revision) {
-			$attributes = json_decode($revision->content, true);
+			$attributes = $revision->content;
 
 			// Remove revision
-			$revision->delete();
-			$revision->save();
+			$revision->forceDelete();
 
 			// Overwrite Model's attributes
 			return $this::update($attributes);
