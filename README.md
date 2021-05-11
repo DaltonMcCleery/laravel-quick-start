@@ -82,7 +82,7 @@ class YourModel extends Model
     }
 ```
 
-Lastly, add a checkbox field to that Model's Nova resource, like so:
+Next, add a checkbox field to that Model's Nova resource, like so:
 
 ```php
 Boolean::make('Create New Revision', 'create_new_revision')
@@ -91,6 +91,19 @@ Boolean::make('Create New Revision', 'create_new_revision')
     ->hideFromDetail()->hideFromIndex()->hideWhenCreating()
     ->help('Create a new revision upon saving that can be reverted to at any time.')
     ->rules('nullable')
+```
+
+Lastly, you can add a Nova Action to your Model resource for reverting to a specific revision:
+
+```php
+use DaltonMcCleery\LaravelQuickStart\Nova\Actions\RevertRevision;
+
+public function actions(Request $request)
+{
+    return [
+        new RevertRevision($request, $this)
+    ];
+}
 ```
 
 Now you can create new revisions either statically (via static model closures) or non-statically 
