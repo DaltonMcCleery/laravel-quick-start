@@ -16,6 +16,7 @@ use Laravel\Nova\Fields\BelongsTo;
 use Infinety\Filemanager\FilemanagerField;
 use ElevateDigital\CharcountedFields\TextCounted;
 use ElevateDigital\CharcountedFields\TextareaCounted;
+use DaltonMcCleery\LaravelQuickStart\Nova\Actions\RevertRevision;
 
 class Page extends \App\Nova\Resource
 {
@@ -81,7 +82,7 @@ class Page extends \App\Nova\Resource
 
 			ID::make()->sortable()->hideFromIndex(),
 
-			new Panel('Page Details', $this->basicInformationFields()),
+			(new Panel('Page Details', $this->basicInformationFields()))->withToolbar(),
 
 			new Panel('SEO / Meta Properties', $this->metadataFields()),
 
@@ -93,7 +94,14 @@ class Page extends \App\Nova\Resource
 					)
 					->displayUsingLabels(),
 
-				$this->flexibleComponents(true)
+				$this->flexibleComponents(true),
+
+				Boolean::make('Create New Revision', 'create_new_revision')
+					->trueValue(1)
+					->falseValue(0)
+					->sortable()->stacked()
+					->help('Create a new Page revision upon saving that can be reverted to at any time.')
+					->rules('nullable')
 			]),
 		];
 	}
@@ -262,6 +270,8 @@ class Page extends \App\Nova\Resource
 	 */
 	public function actions(Request $request)
 	{
-		return [];
+		return [
+			new RevertRevision($request, $this)
+		];
 	}
 }
