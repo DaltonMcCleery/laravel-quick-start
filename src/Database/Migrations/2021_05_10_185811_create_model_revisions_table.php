@@ -15,7 +15,7 @@ class CreateModelRevisionsTable extends Migration
     {
         Schema::create('model_revisions', function (Blueprint $table) {
         	$table->id();
-            $table->longtext('content')->nullable();
+            $table->json('content')->nullable();
             $table->integer('revisionable_model_id');
             $table->string('revisionable_model_type');
             $table->timestamps();

@@ -40,7 +40,7 @@ class ModelRevision extends Model
 	 * @var array
 	 */
 	protected $casts = [
-		'content' => 'object',
+		'content' => 'json',
 	];
 
 	public function revisionable_model() {
