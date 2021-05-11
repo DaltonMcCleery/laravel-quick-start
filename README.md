@@ -1,5 +1,9 @@
 # Laravel Quick Start
 
+## Requirements
+
+This package is dependent on some 3rd party Laravel Nova packages, outlined below, so you must have Nova installed and configured prior to installing this package.
+
 ## Installation
 
 Install this package via Composer:
@@ -104,6 +108,15 @@ $model->revert_last_revision();
 
 $model->revert_to_revision(1);
 ```
+
+## Built With
+
+- [Auto Resolvable Laravel Blade Components](https://github.com/ahinkle/auto-resolvable-blade-components) _(Blade Component Auto Resolver)_
+- [Nova Charcounted Fields](https://github.com/elevate-digital/nova-charcounted-fields) _(Text Fields)_
+- [Nova Filemanager](https://github.com/InfinetyEs/Nova-Filemanager) _(File/Asset Manager)_
+- [Nova Tiptap](https://github.com/manogi/nova-tiptap) _(Editor Field)_
+- [Nova Flexible Content](https://github.com/whitecube/nova-flexible-content) _(Content Repeater Fields)_
+
 
 ## License
 
