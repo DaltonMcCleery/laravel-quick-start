@@ -10,6 +10,8 @@ use DaltonMcCleery\LaravelQuickStart\Models\ModelRevision;
  */
 trait HasModelRevisions
 {
+	public $create_new_revision;
+
 	public function revisions() {
 		return $this->morphMany('DaltonMcCleery\LaravelQuickStart\Models\ModelRevision', 'revisionable_model');
 	}
