@@ -101,7 +101,7 @@ use DaltonMcCleery\LaravelQuickStart\Nova\Actions\RevertRevision;
 public function actions(Request $request)
 {
     return [
-        new RevertRevision($request, $this)
+        new RevertRevision($request->resourceId, $this)
     ];
 }
 ```

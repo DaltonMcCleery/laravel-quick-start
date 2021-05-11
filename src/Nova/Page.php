@@ -272,7 +272,7 @@ class Page extends \App\Nova\Resource
 	public function actions(Request $request)
 	{
 		return [
-			new RevertRevision($request, $this)
+			new RevertRevision($request->resourceId, $this)
 		];
 	}
 }

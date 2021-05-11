@@ -23,11 +23,11 @@ class RevertRevision extends Action
 	public $onlyOnDetail = true;
 
 	protected $model;
-	protected $request;
+	protected $model_id;
 
-	public function __construct($request = null, $model = null)
+	public function __construct($model_id = null, $model = null)
 	{
-		$this->request = $request;
+		$this->model_id = $model_id;
 		$this->model = $model;
 	}
 
@@ -41,9 +41,9 @@ class RevertRevision extends Action
 	public function handle(ActionFields $fields, Collection $models)
 	{
 		foreach ($models as $model) {
-			if ($fields->revision_id) {
+			if (request()->get('revision_id')) {
 				try {
-					$model->revert_to_revision($fields->revision_id);
+					$model->revert_to_revision(request()->get('revision_id'));
 				} catch (\Exception $exception) {
 					return Action::danger($exception->getMessage());
 				}
@@ -62,8 +62,8 @@ class RevertRevision extends Action
 	 */
 	public function fields()
 	{
-		if ($this->request && $this->model) {
-			$revisions = ModelRevision::where('revisionable_model_id', $this->request->resourceId)
+		if ($this->model_id && $this->model) {
+			$revisions = ModelRevision::where('revisionable_model_id', $this->model_id)
 				->where('revisionable_model_type', (new \ReflectionClass($this->model->resource))->getName())
 				->get()
 				->mapWithKeys(function ($revision) {
