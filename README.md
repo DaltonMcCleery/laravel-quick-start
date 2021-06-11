@@ -38,6 +38,7 @@ protected function resources()
 
     Nova::resources([
         \DaltonMcCleery\LaravelQuickStart\Nova\Page::class,
+        \DaltonMcCleery\LaravelQuickStart\Nova\Redirect::class,
         \DaltonMcCleery\LaravelQuickStart\Nova\MainNavMenu::class,
         \DaltonMcCleery\LaravelQuickStart\Nova\BannerPromos::class,
         \DaltonMcCleery\LaravelQuickStart\Nova\MobileNavMenu::class,
@@ -45,6 +46,16 @@ protected function resources()
         \DaltonMcCleery\LaravelQuickStart\Nova\ReusableBlocks::class
     ]);
 }
+```
+
+### Redirects
+Update your `Http/Kernal.php` to add the following line as the last entry in the `$middleware` array:
+
+```php
+protected $middleware = [
+    // ...
+    \DaltonMcCleery\LaravelQuickStart\Http\Middleware\RedirectRequests::class,
+];
 ```
 
 ### Model Revisions
