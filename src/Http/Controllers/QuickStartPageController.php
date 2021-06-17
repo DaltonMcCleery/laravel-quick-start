@@ -19,10 +19,10 @@ class QuickStartPageController extends Controller
 	 */
 	public function page(Request $request)
 	{
-		$active = ['active', '=', true];
+		$active = true;
 		if (Auth::check()) {
 			if (in_array(Auth::user()->email, config('quick_start.view_unpublished_pages'))) {
-				$active = [];
+				$active = false;
 				$request->session()->flash('unpublished', 'Page is unpublished');
 			}
 		}
@@ -33,7 +33,11 @@ class QuickStartPageController extends Controller
 
 		$page = $this->getCache($key, function() use ($key, $url, $active) {
 			// Empty cache, get Page and re-add them to the cache
-			$pages = Page::where([$active])->get();
+			if ($active) {
+				$pages = Page::where('active', true)->get();
+			} else {
+				$pages = Page::all();
+			}
 
 			$dbPage = $pages->where('page_slug', '=', $url)->first();
 
