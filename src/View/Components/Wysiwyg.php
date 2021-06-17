@@ -2,9 +2,9 @@
 
 namespace App\View\Components;
 
-use Ahinkle\AutoResolvableComponents\AutoResolvableComponent;
+use App\View\ComponentWrapper;
 
-class Wysiwyg extends AutoResolvableComponent
+class Wysiwyg extends ComponentWrapper
 {
     public $html;
     public $width;
@@ -14,7 +14,7 @@ class Wysiwyg extends AutoResolvableComponent
      *
      * @return void
      */
-    public function __construct($componentData)
+    public function construct($componentData)
     {
         $this->html = $componentData->attributes->text ?: null;
         $this->width = $componentData->attributes->width ?: 'full';
