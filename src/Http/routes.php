@@ -3,11 +3,17 @@
 use Illuminate\Support\Facades\Route;
 use DaltonMcCleery\LaravelQuickStart\Http\Middleware\CachePageResponse;
 use DaltonMcCleery\LaravelQuickStart\Http\Controllers\QuickStartPageController;
+use DaltonMcCleery\LaravelQuickStart\Http\Controllers\QuickStartImageController;
 use DaltonMcCleery\LaravelQuickStart\Http\Controllers\QuickStartSitemapController;
 
 Route::middleware(['web'])->group(function () {
 	// Sitemap
 	Route::get('/sitemap.xml', [QuickStartSitemapController::class, 'index'])->name('sitemap');
+
+	// Images
+	Route::get('/img/{path}', [QuickStartImageController::class, 'show'])
+		->name('images')
+		->where('path', '.*');
 
 	// Catch-all for routes with the exception of Nova routes.
 	Route::get('/{slug?}', [QuickStartPageController::class, 'page'])

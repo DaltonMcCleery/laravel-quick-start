@@ -22,6 +22,7 @@
     "elevate-digital/nova-charcounted-fields": "dev-master",
     "illuminate/support": "^8.0",
     "infinety-es/nova-filemanager": "^2.8",
+    "league/glide-laravel": "^1.0",
     "manogi/nova-tiptap": "^1.4",
     "whitecube/nova-flexible-content": "^0.2.8"
   },

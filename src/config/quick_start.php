@@ -15,5 +15,7 @@ return [
 
 	'view_unpublished_pages' => [
 		// test@email.com
-	]
+	],
+
+	'image_driver' => 'imagick'
 ];
