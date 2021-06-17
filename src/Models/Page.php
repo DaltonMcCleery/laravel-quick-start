@@ -68,6 +68,10 @@ class Page extends Model
 		'parent'
 	];
 
+	protected $appends = [
+		'page_slug'
+	];
+
 	/**
 	 * The "booted" method of the model.
 	 *
@@ -89,6 +93,11 @@ class Page extends Model
 
 			$page->editor()->associate($user);
 
+			// Clear cache
+			static::clearCacheStatically('page_'.$page->slug);
+		});
+
+		static::deleting(function ($page) {
 			// Clear cache
 			static::clearCacheStatically('page_'.$page->slug);
 		});
@@ -117,15 +126,22 @@ class Page extends Model
 	public function getPageSlugAttribute(): string
 	{
 		if ($this->slug) {
-			$prefix = '';
-			if ($this->parent) {
-				$prefix = '/'.$this->parent->slug;
-			}
+			$prefix = $this->buildParentSlug('', $this);
 
 			return $prefix.'/'.(($this->slug === 'home') ? '' : $this->slug);
 		}
 
-		return '/';
+		return '#';
+	}
+
+	private function buildParentSlug($slug, $model) {
+		if ($model->parent) {
+			$slug = "/{$model->parent->slug}{$slug}";
+
+			return $this->buildParentSlug($slug, $model->parent);
+		}
+
+		return $slug;
 	}
 
 	protected static function newFactory()
