@@ -19,7 +19,7 @@ class QuickStartPageController extends Controller
 	 */
 	public function page(Request $request)
 	{
-		$active = ['active' => true];
+		$active = ['active', '=', true];
 		if (Auth::check()) {
 			if (in_array(Auth::user()->email, config('quick_start.view_unpublished_pages'))) {
 				$active = [];
@@ -28,44 +28,44 @@ class QuickStartPageController extends Controller
 		}
 
 		// Get the requested Page, if any. (check cache first, else check DB)
-		$segments = $this->get_segments($request);
-		$page = $this->getCache('page_'.$segments->last(), function() use ($segments, $active) {
+		$url = $this->getUrl($request);
+		$key = "page_{$url}";
+
+		$page = $this->getCache($key, function() use ($key, $url, $active) {
 			// Empty cache, get Page and re-add them to the cache
-			$dbPage = Page::with(['parent' => function ($query) use ($segments, $active) {
-				if ($segments->count() > 1) {
-					// more than 1 segment found, find Parent Page
-					$query->where(array_merge($active, [
-						'slug' => $segments->first()
-					]));
-				}
-			}])
-				->where(array_merge($active, [
-					'slug' => $segments->last()
-				]))
-				// If the Page HAS a parent page associated with it, the bare slug should not allow the page to be rendered
-				->where('parent_id', ($segments->count() > 1 ? '!=' : '='), null)
-				->firstOrFail();
+			$pages = Page::where([$active])->get();
+
+			$dbPage = $pages->where('page_slug', '=', $url)->first();
+
+			if (! $dbPage) {
+				abort(404);
+			}
 
 			// Set new cached page info
-			$this->setCache('page_'.$segments->last(), $dbPage);
+			$this->setCache($key, $dbPage);
 
 			return $dbPage;
 		});
 
-		return view(
+		if (! $page instanceof Page) {
+			// HTML cache
+			return response($page, 200);
+		}
+
+		return response(view(
 			'templates.'.($page->template ?: 'page'),
 			['page' => $page]
-		);
+		), 200, ['custom-cached-page' => $key]);
 	}
 
 	/**
 	 * The requested slug segments from the URL Request.
 	 *
 	 * @param Request $request
-	 * @return \Illuminate\Support\Collection
+	 * @return string
 	 */
-	protected function get_segments(Request $request)
+	protected function getUrl(Request $request)
 	{
-		return collect($request->segments() ?: ['home']);
+		return '/'.collect($request->segments())->join('/');
 	}
 }
