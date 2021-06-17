@@ -3,6 +3,7 @@
 namespace DaltonMcCleery\LaravelQuickStart\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * Class Redirect
