@@ -94,12 +94,12 @@ class Page extends Model
 			$page->editor()->associate($user);
 
 			// Clear cache
-			static::clearCacheStatically('page_'.$page->slug);
+			static::clearCacheStatically('page_'.$page->page_slug);
 		});
 
 		static::deleting(function ($page) {
 			// Clear cache
-			static::clearCacheStatically('page_'.$page->slug);
+			static::clearCacheStatically('page_'.$page->page_slug);
 		});
 	}
 
