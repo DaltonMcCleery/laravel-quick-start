@@ -55,16 +55,17 @@ class NavigationMenu extends Model
 	{
 		static::creating(function () {
 			// Clear cache
-			static::clearCacheStatically('desktop_menu');
-			static::clearCacheStatically('mobile_menu');
-			static::clearCacheStatically('footer_menu');
+			static::clearAllCacheStatically();
 		});
 
 		static::updating(function () {
 			// Clear cache
-			static::clearCacheStatically('desktop_menu');
-			static::clearCacheStatically('mobile_menu');
-			static::clearCacheStatically('footer_menu');
+			static::clearAllCacheStatically();
+		});
+
+		static::deleting(function () {
+			// Clear cache
+			static::clearAllCacheStatically();
 		});
 	}
 

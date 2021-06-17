@@ -5,6 +5,7 @@ namespace DaltonMcCleery\LaravelQuickStart\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use DaltonMcCleery\LaravelQuickStart\Traits\CacheTrait;
 
 /**
  * Class BannerPromo
@@ -15,6 +16,7 @@ class BannerPromo extends Model
 {
 	use SoftDeletes;
 	use HasFactory;
+	use CacheTrait;
 
 	/**
 	 * The table associated with the model.
@@ -62,13 +64,24 @@ class BannerPromo extends Model
 	{
 		$user = auth()->user();
 
-		static::creating(function ($page) use ($user) {
-			$page->author()->associate($user);
-			$page->editor()->associate($user);
+		static::creating(function ($promo) use ($user) {
+			$promo->author()->associate($user);
+			$promo->editor()->associate($user);
+
+			// Clear cache
+			static::clearAllCacheStatically();
 		});
 
-		static::updating(function ($page) use ($user) {
-			$page->editor()->associate($user);
+		static::updating(function ($promo) use ($user) {
+			$promo->editor()->associate($user);
+
+			// Clear cache
+			static::clearAllCacheStatically();
+		});
+
+		static::deleting(function () {
+			// Clear cache
+			static::clearAllCacheStatically();
 		});
 	}
 

@@ -3,7 +3,6 @@
 namespace DaltonMcCleery\LaravelQuickStart\Traits;
 
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Filesystem\Filesystem;
 
 /**
  * Trait CacheTrait
