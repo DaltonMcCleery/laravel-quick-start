@@ -48,4 +48,9 @@ class Redirect extends Model
 	{
 		return redirect($this->to_url, $this->status_code);
 	}
+
+	protected static function newFactory()
+	{
+		return \DaltonMcCleery\LaravelQuickStart\Database\Factories\RedirectFactory::new();
+	}
 }
