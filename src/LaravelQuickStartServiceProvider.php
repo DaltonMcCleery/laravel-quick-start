@@ -82,7 +82,6 @@ class LaravelQuickStartServiceProvider extends ServiceProvider
 
 	    $this->publishes([
 		    __DIR__.'/View/Components' => app_path('View/Components'),
-		    __DIR__.'/View/Components/ComponentWrapper.php' => app_path('View/Components/ComponentWrapper.php')
 	    ], 'views');
 
 	    $this->publishes([
