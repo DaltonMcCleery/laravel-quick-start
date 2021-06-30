@@ -10,16 +10,16 @@
         <span id="scroll-to-top"></span>
 
         <x:promo-banner />
-        <header>
+        <header role="banner">
             @include('includes.layout.navigation')
         </header>
 
-        <div id="body">
+        <main id="body" role="main">
             @yield('content')
             @yield('second-content')
 
             @include('includes.layout.footer')
-        </div>
+        </main>
 
         @include('includes.layout.scripts')
 

@@ -1,3 +1,3 @@
-<nav id="navigation">
+<nav id="navigation" role="navigation">
 
 </nav>
