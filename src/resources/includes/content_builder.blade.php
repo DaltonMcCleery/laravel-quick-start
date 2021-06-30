@@ -1,5 +1,5 @@
 @if(!empty($content))
     @foreach ($content as $content_item)
-        <x:dynamic-component :component="$content_item->layout" :componentData="$content_item"/>
+        <x:page-builder-component :componentData="$content_item" :loop="$loop->index"/>
     @endforeach
 @endif
