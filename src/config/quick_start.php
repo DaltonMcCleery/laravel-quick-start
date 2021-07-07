@@ -17,5 +17,7 @@ return [
 		// test@email.com
 	],
 
-	'image_driver' => 'imagick'
+	'image_driver' => 'imagick',
+
+	'page_cache_time' => '8'
 ];
