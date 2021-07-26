@@ -133,6 +133,21 @@ $model->revert_last_revision();
 $model->revert_to_revision(1);
 ```
 
+### Routing
+
+By default, the package will autoload the catch-all routes, which will override your application's routes in the `web.php` file. 
+You may disable the auto-routing via the published config file and manually load the routes by adding the following line 
+in your `RouteServiceProvider`'s boot method:
+
+```php
+Route::middleware('web')
+    ->namespace($this->namespace)
+    ->group(base_path('routes/web.php'));
+
+// Add...
+\DaltonMcCleery\LaravelQuickStart\LaravelQuickStartServiceProvider::registerRoutes();
+```
+
 ## Built With
 
 - [Auto Resolvable Laravel Blade Components](https://github.com/ahinkle/auto-resolvable-blade-components) _(Blade Component Auto Resolver)_

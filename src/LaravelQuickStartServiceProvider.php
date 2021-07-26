@@ -16,7 +16,10 @@ class LaravelQuickStartServiceProvider extends ServiceProvider
 	 */
 	public function boot()
 	{
-		$this->registerRoutes();
+		if (config('quick_start.autoload_routes', true)) {
+			$this->autoRegisterRoutes();
+		}
+
 		$this->registerMigrations();
 		$this->registerPublishing();
 	}
@@ -26,7 +29,19 @@ class LaravelQuickStartServiceProvider extends ServiceProvider
 	 *
 	 * @return void
 	 */
-	private function registerRoutes()
+	public static function registerRoutes()
+	{
+		Route::middleware('web')
+			->namespace('DaltonMcCleery\LaravelQuickStart\Http\Controllers')
+			->group(__DIR__ . '/Http/routes.php');
+	}
+
+	/**
+	 * Register the package routes.
+	 *
+	 * @return void
+	 */
+	private function autoRegisterRoutes()
 	{
 		Route::group($this->routeConfiguration(), function () {
 			$this->loadRoutesFrom(__DIR__ . '/Http/routes.php');

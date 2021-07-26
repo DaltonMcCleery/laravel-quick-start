@@ -19,5 +19,7 @@ return [
 
 	'image_driver' => 'imagick',
 
-	'page_cache_time' => '8'
+	'page_cache_time' => '8',
+
+	'autoload_routes' => true
 ];
