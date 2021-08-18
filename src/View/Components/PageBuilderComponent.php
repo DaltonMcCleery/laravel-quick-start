@@ -2,10 +2,13 @@
 
 namespace App\View\Components;
 
+use DaltonMcCleery\LaravelQuickStart\Traits\CacheTrait;
 use Illuminate\View\Component;
 
 class PageBuilderComponent extends Component
 {
+	use CacheTrait;
+
 	public string $key;
 
 	public string $layout;
@@ -52,6 +55,22 @@ class PageBuilderComponent extends Component
 			->reject(fn ($value, $property) => ($property === 'attributes' || $property === 'componentName' || $property === 'except')) // Native Laravel Component Properties.
 			->filter(fn ($value, $property) => is_null($value))
 			->each(fn ($attribute, $key) => $this->vars[$key] = '');
+
+		if ($this->layout === 'reusable-block') {
+			$block_id = $this->vars['block'];
+			$block = $this->getCache('reusable_block_'.$block_id, function () use ($block_id) {
+				$dbBlock = \DaltonMcCleery\LaravelQuickStart\Models\ReusableBlock::where('active', 1)
+					->where('id', $block_id)
+					->first();
+
+				// Set new cached Block info
+				$this->setCache('reusable_block_'.$block_id, $dbBlock);
+
+				return $dbBlock;
+			});
+
+			$this->vars['content'] = $block->content ?? [];
+		}
 	}
 
 	public function render()

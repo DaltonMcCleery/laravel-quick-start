@@ -41,7 +41,7 @@ trait ContentTrait
 
         if ($showReusable) {
 	        // Reusable Blocks
-	        $content->addLayout('Reusable Block', 'reusable_block', $this->reusable_block());
+	        $content->addLayout('Reusable Block', 'reusable-block', $this->reusable_block());
         }
 
         return $content;
