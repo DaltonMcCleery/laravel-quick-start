@@ -126,7 +126,6 @@ class Page extends \App\Nova\Resource
 						'placeholder' => 'Page Title',
 					],
 				])
-				->maxChars(255)->warningAt(230)
 				->rules('required', 'max:255'),
 
 			Text::make('Page URL', 'slug')
