@@ -19,7 +19,6 @@
     "php": "^7.4|^8.0",
     "ahinkle/auto-resolvable-blade-components": "^1.0",
     "doctrine/dbal": "^2.9|^3.0",
-    "elevate-digital/nova-charcounted-fields": "dev-master",
     "illuminate/support": "^8.0",
     "infinety-es/nova-filemanager": "^2.8",
     "league/glide-laravel": "^1.0",

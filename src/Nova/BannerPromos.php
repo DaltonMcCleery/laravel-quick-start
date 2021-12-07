@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\BelongsTo;
-use ElevateDigital\CharcountedFields\TextCounted;
 
 class BannerPromos extends \App\Nova\Resource
 {
@@ -59,9 +58,8 @@ class BannerPromos extends \App\Nova\Resource
             ID::make()->sortable(),
 
             new Panel('Details and Scheduling', [
-                TextCounted::make('Name')
+                Text::make('Name')
                     ->sortable()->stacked()
-                    ->maxChars(200)->warningAt(180)
                     ->help('Internal Use Only to identify the Banner Promo')
                     ->rules('required', 'max:200'),
 

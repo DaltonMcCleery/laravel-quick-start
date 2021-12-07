@@ -3,15 +3,14 @@
 namespace App\Traits;
 
 use Manogi\Tiptap\Tiptap;
+use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Heading;
 use Infinety\Filemanager\FilemanagerField;
 use Whitecube\NovaFlexibleContent\Flexible;
-use ElevateDigital\CharcountedFields\TextCounted;
 use OptimistDigital\MultiselectField\Multiselect;
-use ElevateDigital\CharcountedFields\TextareaCounted;
 
 /**
  * Trait ContentTrait

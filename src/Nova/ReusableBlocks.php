@@ -11,8 +11,6 @@ use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Boolean;
 use Infinety\Filemanager\FilemanagerField;
-use ElevateDigital\CharcountedFields\TextCounted;
-use ElevateDigital\CharcountedFields\TextareaCounted;
 
 class ReusableBlocks extends \App\Nova\Resource
 {
@@ -64,9 +62,8 @@ class ReusableBlocks extends \App\Nova\Resource
 		return [
 			ID::make()->sortable()->hideFromIndex(),
 
-			TextCounted::make('Reusable Block Name', 'name')
+			Text::make('Reusable Block Name', 'name')
 				->sortable()->stacked()
-				->maxChars(255)->warningAt(230)
 				->rules('required', 'max:255')
 				->help('Defines the Block\'s name for Internal Use Only (this will not show up to the public)'),
 

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\BelongsTo;
-use ElevateDigital\CharcountedFields\TextCounted;
+use Laravel\Nova\Fields\Text;
 use DaltonMcCleery\LaravelQuickStart\Nova\Filters\MenuType;
 
 class FooterNavMenu extends \App\Nova\Resource
@@ -68,9 +68,8 @@ class FooterNavMenu extends \App\Nova\Resource
         return [
             ID::make()->sortable()->hideFromIndex(),
 
-            TextCounted::make('Menu Name', 'name')
+            Text::make('Menu Name', 'name')
                 ->stacked()
-                ->maxChars(255)->warningAt(230)
                 ->help('Populates the name of the Option.')
                 ->rules('required', 'max:255'),
 
@@ -80,9 +79,8 @@ class FooterNavMenu extends \App\Nova\Resource
                 ->help('The order in which this menu item is displayed within the navigation. Lower numbers means it shows up first while higher numbers means it shows up later')
                 ->rules('required'),
 
-            TextCounted::make('Menu Link (optional)', 'link')
+            Text::make('Menu Link (optional)', 'link')
                 ->stacked()
-                ->maxChars(255)->warningAt(230)
                 ->help('The URL this menu will direct the user to when clicked. RECOMMEND USING PAGE OPTION BELOW')
                 ->rules('nullable', 'max:255'),
 
@@ -96,7 +94,7 @@ class FooterNavMenu extends \App\Nova\Resource
             HasMany::make('Children Links', 'children', 'DaltonMcCleery\LaravelQuickStart\Nova\FooterNavMenu')
                 ->stacked()->nullable(),
 
-            TextCounted::make('Type')
+            Text::make('Type')
                 ->help('DO NOT CHANGE')
                 ->hideFromIndex(true)->hideFromDetail(true)
                 ->stacked()->withMeta([

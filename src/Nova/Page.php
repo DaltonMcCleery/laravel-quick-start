@@ -7,6 +7,7 @@ use Laravel\Nova\Fields\ID;
 use App\Traits\ContentTrait;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Date;
+use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Heading;
@@ -14,8 +15,6 @@ use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\MorphTo;
 use Laravel\Nova\Fields\BelongsTo;
 use Infinety\Filemanager\FilemanagerField;
-use ElevateDigital\CharcountedFields\TextCounted;
-use ElevateDigital\CharcountedFields\TextareaCounted;
 use DaltonMcCleery\LaravelQuickStart\Nova\Actions\RevertRevision;
 
 class Page extends \App\Nova\Resource
@@ -115,13 +114,12 @@ class Page extends \App\Nova\Resource
 	protected function basicInformationFields()
 	{
 		return [
-			TextCounted::make('Page Name', 'name')
+			Text::make('Page Name', 'name')
 				->sortable()->stacked()
-				->maxChars(255)->warningAt(230)
 				->rules('required', 'max:255')
 				->help('Defines the Page\'s name for Internal Use Only (this will not show up to the public)'),
 
-			TextCounted::make('Title')
+			Text::make('Title')
 				->sortable()->stacked()
 				->withMeta([
 					'extraAttributes' => [
@@ -189,33 +187,28 @@ class Page extends \App\Nova\Resource
 
 	protected function metadataFields() {
 		return [
-			TextCounted::make('Meta Title')
+			Text::make('Meta Title')
 				->hideFromIndex()->stacked()
-				->maxChars(255)->warningAt(230)
 				->help('Populates the title of the webpage for search engines.')
 				->rules('required', 'max:255'),
 
-			TextareaCounted::make('Meta Description')
+			Textarea::make('Meta Description')
 				->hideFromIndex()->stacked()
-				->maxChars(200)->warningAt(180)
 				->help('Meta description must be no longer than 200 characters.')
 				->rules('required', 'max:200'),
 
-			TextCounted::make('Open Graph Title', 'og_title')
+			Text::make('Open Graph Title', 'og_title')
 				->hideFromIndex()->stacked()
-				->maxChars(95)->warningAt(80)
 				->help('The title that populates when the page is shared via Twitter and Facebook. Uses page title if left blank. Maximum 95 Characters.')
 				->rules('nullable', 'max:95'),
 
-			TextareaCounted::make('Open Graph Description', 'og_description')
+			Textarea::make('Open Graph Description', 'og_description')
 				->hideFromIndex()->stacked()
-				->maxChars(300)->warningAt(250)
 				->help('The description that populates when this page is shared via Twitter and Facebook. Uses Meta Description if left blank. Maximum 300 Characters.')
 				->rules('nullable', 'max:300'),
 
-			TextareaCounted::make('Meta Keywords')
+			Textarea::make('Meta Keywords')
 				->hideFromIndex()->stacked()
-				->maxChars(255)->warningAt(230)
 				->help('Populates specific keywords for search engines. Please comma separate each keyword')
 				->rules('nullable', 'max:255'),
 
