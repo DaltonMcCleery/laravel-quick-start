@@ -21,8 +21,6 @@
     "doctrine/dbal": "^2.9|^3.0",
     "illuminate/support": "^8.0",
     "infinety-es/nova-filemanager": "^2.8",
-    "league/glide-laravel": "^1.0",
-    "manogi/nova-tiptap": "^1.4",
     "whitecube/nova-flexible-content": "^0.2.8"
   },
   "require-dev": {
