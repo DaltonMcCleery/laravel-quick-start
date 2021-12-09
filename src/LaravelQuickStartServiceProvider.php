@@ -2,6 +2,7 @@
 
 namespace DaltonMcCleery\LaravelQuickStart;
 
+use DaltonMcCleery\LaravelQuickStart\Console\Commands\MigrateToBackbone;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
@@ -22,6 +23,12 @@ class LaravelQuickStartServiceProvider extends ServiceProvider
 
 		$this->registerMigrations();
 		$this->registerPublishing();
+
+		if ($this->app->runningInConsole()) {
+			$this->commands([
+				MigrateToBackbone::class,
+			]);
+		}
 	}
 
 	/**
