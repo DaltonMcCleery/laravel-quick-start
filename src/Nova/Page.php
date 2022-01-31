@@ -77,7 +77,7 @@ class Page extends \App\Nova\Resource
 	{
 		return [
 			MorphTo::make('Extendable Page', 'extendable_page')->types(config('quick_start.page_relationships'))
-				->hideWhenCreating()->hideWhenUpdating(),
+				->hideWhenCreating()->hideWhenUpdating()->hideFromIndex(),
 
 			ID::make()->sortable()->hideFromIndex(),
 
