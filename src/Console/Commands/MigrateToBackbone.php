@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\Model;
 
 class MigrateToBackbone extends Command
 {
@@ -104,28 +105,36 @@ class MigrateToBackbone extends Command
 		$pages = json_decode(Storage::get('pages.json'));
 
 		foreach ($pages as $page) {
-			$page = new Page((array) $page);
+			foreach ($pages as $page) {
+				$page = new Page((array) $page);
 
-			\Grayloon\LaravelBackbone\Models\Page::withoutEvents(function () use ($page) {
-				\Grayloon\LaravelBackbone\Models\Page::create([
-					'id' => $page->id,
-					'name' => $page->name,
-					'slug' => $page->slug,
-					'content' => $page->content,
-					'is_indexable' => true,
-					'is_active' => $page->active,
-					'author_id' => null,
-					'editor_id' => null,
-					'meta_title' => $page->meta_title,
-					'meta_description' => $page->meta_description,
-					'og_title' => $page->og_title,
-					'og_description' => $page->og_description,
-					'og_image' => $page->social_image,
-					'pageable_id' => $page->extendable_page_id,
-					'pageable_type' => $page->extendable_page_type,
-					'deleted_at' => $page->deleted_at,
-				]);
-			});
+				$page->content = collect($page->content)->map(function ($content) {
+					$content->layout = str_replace('_', '-', $content->layout);
+
+					return $content;
+				});
+
+				\Grayloon\LaravelBackbone\Models\Page::withoutEvents(function () use ($page) {
+					\Grayloon\LaravelBackbone\Models\Page::create([
+						'id' => $page->id,
+						'name' => $page->name,
+						'slug' => $page->page_slug,
+						'content' => $page->content,
+						'is_indexable' => true,
+						'is_active' => $page->active,
+						'author_id' => null,
+						'editor_id' => null,
+						'meta_title' => $page->meta_title,
+						'meta_description' => $page->meta_description,
+						'og_title' => $page->og_title,
+						'og_description' => $page->og_description,
+						'og_image' => $page->social_image,
+						'pageable_id' => $page->extendable_page_id,
+						'pageable_type' => $page->extendable_page_type,
+						'deleted_at' => $page->deleted_at,
+					]);
+				});
+			}
 		}
 	}
 
